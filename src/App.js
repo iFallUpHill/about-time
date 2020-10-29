@@ -4,7 +4,6 @@ import { GlobalStyles } from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Themes"
 import  { useDarkMode } from "./styles/useDarkMode"
 
-import ThemeToggleButton from "./components/ThemeToggleButton"
 import ThemeSelector from "./components/ThemeSelector"
 
 const App = () => {
@@ -17,7 +16,6 @@ const App = () => {
       <>
       <GlobalStyles/>
         <div className="App">
-          <ThemeToggleButton theme={theme} toggleTheme={toggleTheme} />
           <ThemeSelector theme={theme} toggleTheme={toggleTheme} />
           <p>
             some text

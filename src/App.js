@@ -1,10 +1,11 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyles } from "./styles/GlobalStyles";
-import { lightTheme, darkTheme } from "./styles/Themes"
+import { GlobalStyles } from "./styles/globalStyles";
+import { lightTheme, darkTheme } from "./styles/themes"
 import  { useDarkMode } from "./styles/useDarkMode"
 
 import ThemeSelector from "./components/ThemeSelector"
+import WordClock from "./components/WordClock"
 
 const App = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -13,14 +14,12 @@ const App = () => {
   if(!componentMounted) return <div/>
   return (
     <ThemeProvider theme={themeMode}>
-      <>
       <GlobalStyles/>
-        <div className="App">
-          <ThemeSelector theme={theme} toggleTheme={toggleTheme} />
-          <p>
-            Hello World
-          </p>
-        </div>
+      <>
+        <ThemeSelector theme={theme} toggleTheme={toggleTheme} />
+        <br />
+        <br />
+        <WordClock />
       </>
     </ThemeProvider>
     

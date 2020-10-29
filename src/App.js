@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./styles/GlobalStyles";
 import { lightTheme, darkTheme } from "./styles/Themes"
@@ -18,7 +18,7 @@ const App = () => {
         <div className="App">
           <ThemeSelector theme={theme} toggleTheme={toggleTheme} />
           <p>
-            some text
+            Hello World
           </p>
         </div>
       </>

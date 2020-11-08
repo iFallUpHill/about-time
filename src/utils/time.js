@@ -22,11 +22,11 @@ const minuteAsWord = {
   30: 'half',
 }
 
-const roughRound = (time) => {
-  const seconds = time.getSeconds();
-  const minute = time.getMinutes();
+const roughRound = (dateTime) => {
+  const seconds = dateTime.getSeconds();
+  const minute = dateTime.getMinutes();
   const secondsPast = minute * 60 + seconds;
-  const hour = time.getHours() % 12 || 12;
+  const hour = dateTime.getHours() % 12 || 12;
   const hourWord = hourAsWord[hour];
   let message = '';
 
@@ -61,11 +61,11 @@ const roughRound = (time) => {
 }
 
 
-const conservativeRound = (time) => {
-  const seconds = time.getSeconds();
-  const minute = time.getMinutes();
+const conservativeRound = (dateTime) => {
+  const seconds = dateTime.getSeconds();
+  const minute = dateTime.getMinutes();
   const secondsPast = minute * 60 + seconds;
-  const hour = time.getHours() % 12 || 12;
+  const hour = dateTime.getHours() % 12 || 12;
   const hourWord = hourAsWord[hour];
   let message = '';
 
@@ -97,11 +97,8 @@ const conservativeRound = (time) => {
   return message;
 }
 
-const getTimeApproximation = (time, rounding = 'rough') => {
-  if (rounding === 'conservative') {
-    return conservativeRound(time);
-  }
-  return roughRound(time);
+const getTimeApproximation = (dateTime, rounding = 'conservative') => {
+  return (rounding === 'rough' ? roughRound(dateTime): conservativeRound(dateTime));
 }
 
 export default getTimeApproximation;

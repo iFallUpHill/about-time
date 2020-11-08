@@ -1,25 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import getTimeApproximation from '../../utils/time';
+import getDateText from '../../utils/date';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-const WordClock = () => {
-  const [time, setTime] = useState(new Date());
+const Container = styled.div`
+  text-align: center;
+`
+
+const TimeText = styled.h1`
+  font-size: 3em;
+  margin: 0;
+  color: ${({ theme }) => theme.text};
+`
+
+const DateText = styled.h2`
+  font-size: 2em;
+  margin: -0.5em 0 0;
+  color: ${({ theme }) => theme.text};
+`
+
+const WordClock = ({ rounding = 'conservative', shortDate = false }) => {
+  const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setTime(new Date());
+      setDateTime(new Date());
     }, 1000);
 
     return () => {
       clearInterval(interval);
     };
-  }, [time])
+  }, [dateTime])
 
   return (
-    <>
-      { getTimeApproximation(time, 'rough') }
-      <br />
-      { getTimeApproximation(time, 'conservative') }
-    </>
+    <Container>
+      <TimeText>{ getTimeApproximation(dateTime, rounding) }</TimeText>
+      <DateText>{ getDateText(dateTime, shortDate) }</DateText>
+    </Container>
   )
 }
 

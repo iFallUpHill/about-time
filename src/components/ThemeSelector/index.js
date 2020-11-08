@@ -13,6 +13,7 @@ const getStoredTheme = () => {
 }
 
 const ButtonGroup = styled.div`
+  position: absolute;
   display: inline-flex;
 
   > * + * {

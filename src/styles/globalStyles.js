@@ -1,4 +1,4 @@
-import { createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
   body {
@@ -9,5 +9,7 @@ export const GlobalStyles = createGlobalStyle`
                 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
                 sans-serif;
     font-size: 16px;
+    margin: 0;
+    line-height: 1.5;
   }
   `

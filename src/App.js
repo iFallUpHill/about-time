@@ -6,6 +6,7 @@ import  { useDarkMode } from "./styles/useDarkMode"
 
 import ThemeSelector from "./components/ThemeSelector"
 import WordClock from "./components/WordClock"
+import FullScreen from "./components/FullScreen"
 
 const App = () => {
   const [theme, toggleTheme, componentMounted] = useDarkMode();
@@ -16,10 +17,13 @@ const App = () => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyles/>
       <>
-        <ThemeSelector theme={theme} toggleTheme={toggleTheme} />
-        <br />
-        <br />
-        <WordClock />
+        <div>
+          <ThemeSelector theme={theme} toggleTheme={toggleTheme} />
+        </div>
+        <FullScreen>
+          <WordClock />
+          <WordClock rounding='rough' shortDate />
+        </FullScreen>
       </>
     </ThemeProvider>
     

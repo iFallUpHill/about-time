@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
 export const useDarkMode = () => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('system');
   const [componentMounted, setComponentMounted] = useState(false);
   const systemDarkMode = window?.matchMedia('(prefers-color-scheme: dark)')?.matches;
 
-  const toggleTheme = (variant = 'light') => {
+  const toggleTheme = (variant = 'system') => {
     window.localStorage.setItem('theme', variant);
 
     if ((systemDarkMode && variant === 'system') || variant === 'dark') {
@@ -16,7 +16,7 @@ export const useDarkMode = () => {
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem('theme');
+    let localTheme = window.localStorage.getItem('theme') || 'system';
     toggleTheme(localTheme);
     setComponentMounted(true);
   }, []);

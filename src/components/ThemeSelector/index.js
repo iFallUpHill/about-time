@@ -9,8 +9,7 @@ const options = [
 
 const getStoredTheme = () => {
   const localTheme = window.localStorage.getItem('theme');
-  return options.find(obj => obj.value === localTheme);
-}
+  return options.find(obj => obj.value === localTheme)}
 
 const ButtonGroup = styled.div`
   position: absolute;
